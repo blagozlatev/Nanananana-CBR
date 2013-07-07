@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,13 @@ namespace ComicBookReader
         public MainWindow()
         {
             InitializeComponent();
+            ZipArchive zip = ZipFile.OpenRead("Hellblazer 001.cbz");
+            ZipArchiveEntry entry1 = zip.GetEntry("P00001.jpg");            
+            var imageSource = new BitmapImage();
+            imageSource.BeginInit();
+            imageSource.StreamSource = entry1.Open();
+            imageSource.EndInit();
+            Page.Source = imageSource;
         }
     }
 }

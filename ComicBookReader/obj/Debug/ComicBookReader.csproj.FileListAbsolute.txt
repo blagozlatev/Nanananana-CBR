@@ -1,2 +1,14 @@
 D:\Programming\ComicBookReader\ComicBookReader\bin\Debug\ComicBookReader.exe.config
 D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\ComicBookReader.exe.config
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\ComicBookReader.exe
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\ComicBookReader.pdb
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.csprojResolveAssemblyReference.cache
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\MainWindow.baml
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\MainWindow.g.cs
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\App.g.cs
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader_MarkupCompile.cache
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.g.resources
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.Properties.Resources.resources
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.csproj.GenerateResource.Cache
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.exe
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.pdb
