@@ -1,0 +1,2 @@
+D:\Programming\ComicBookReader\ComicBookReader\bin\Debug\ComicBookReader.exe.config
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\ComicBookReader.exe.config
