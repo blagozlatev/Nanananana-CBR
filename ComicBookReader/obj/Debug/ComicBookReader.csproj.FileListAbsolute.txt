@@ -12,3 +12,6 @@ D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.P
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.csproj.GenerateResource.Cache
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.exe
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.pdb
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\SharpCompress.dll
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader_Content.g.cs
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\SevenZipSharp.dll
