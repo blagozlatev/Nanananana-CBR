@@ -1,4 +1,5 @@
-CSharpComicBookReader
+CSharp Comic Book Reader
 =====================
 
-CSharpComicBookReader
+Comic Book Reader made with C# and WPF.
+
