@@ -18,6 +18,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SevenZip;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
+using System.Collections.ObjectModel;
 
 namespace ComicBookReader
 {
@@ -26,71 +28,132 @@ namespace ComicBookReader
     /// </summary>
 
     
+
     public partial class MainWindow : Window
     {
         int page = 0;
-        static ZipArchive zip = ZipFile.OpenRead("Hellblazer 001.cbz");
-        List<ZipArchiveEntry> entries = zip.Entries.ToList();
-        ZipArchiveEntry entry;
-        
+        SevenZipExtractor sze;
+        ReadOnlyCollection<string> archiveNames;
+        Collection<string> mutableArchiveNames = new Collection<string>();
+        MemoryStream ms;
+        BitmapImage bitmap;
+
         public MainWindow()
         {
             InitializeComponent();
-            SevenZipCompressor.SetLibraryPath("7z.dll");            
-            SevenZipExtractor sze = new SevenZipExtractor("Batman_Beyond_025_282013_29_28digital_29_28Son_of_Ultron_Empire_29.cbr");                        
-            MemoryStream ms = new MemoryStream();
-            //sze.BeginExtractFile(1, ms);            
-            sze.ExtractFile(1, ms);                        
-            var bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            ms.Seek(0, SeekOrigin.Begin);
-            bitmap.StreamSource = ms;
-            bitmap.EndInit();
-            Page.Source = bitmap;                       
+            SevenZipCompressor.SetLibraryPath("7z.dll");
+            sze = new SevenZipExtractor(getFileDirectory());
+            archiveNames = sze.ArchiveFileNames;
+            foreach (string s in archiveNames)
+            {
+                if (Regex.Match(s, "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif").Success == true){
+                    mutableArchiveNames.Add(s);
+                }
+            }
+            archiveNames = null;
+            ms = new MemoryStream();
+            foreach (string fileName in mutableArchiveNames)
+            {
+                sze.ExtractFile(mutableArchiveNames.ElementAt(0), ms);
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                ms.Seek(0, SeekOrigin.Begin);
+                bitmap.StreamSource = ms;
+                bitmap.EndInit();
+                Page.Source = bitmap;
+                page++;
+                break;
+            }
         }
+        
+        private string getFileDirectory()
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.FileName = string.Empty;
+            openFile.DefaultExt = ".cbr";
+            openFile.Filter = "Comic Book Archive (*.cbr, *.cbz, *.cba)|*.cbr;*.cbz;*.cba";
+            var fileFound = openFile.ShowDialog();
+            if (fileFound == true)
+            {
+                return openFile.FileName;
+            }
+            return null;
+        }       
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            /*
-            foreach (ZipArchiveEntry z in entries)
+        {      
+            if (e.Key == Key.Right)
             {
-                string str = string.Empty;
-                if (e.Key == Key.Right)
-                {                    
-                    str = "0" + page;
-                    if (Regex.Match(z.Name, str).Success == true)
+                if (ms != null && sze != null)
+                {
+                    page++;
+                    foreach (string fileName in archiveNames)
+                    {                        
+                        if (Regex.Match(fileName, page + ".").Success == true)
+                        {
+                            ms.Dispose();
+                            ms = new MemoryStream();
+                            sze.ExtractFile(fileName, ms);
+                            bitmap = new BitmapImage();
+                            bitmap.BeginInit();
+                            ms.Seek(0, SeekOrigin.Begin);
+                            bitmap.StreamSource = ms;
+                            bitmap.EndInit();
+                            Page.Source = bitmap;                            
+                            break;
+                        }
+                    }                               
+                }
+            }
+            if (e.Key == Key.Left)
+            {
+                if (ms != null && sze != null && page >= 0)
+                {
+                    page--;
+                    foreach (string fileName in archiveNames)
                     {
-                        entry = z;
-                        var imageSource = new BitmapImage();
-                        imageSource.BeginInit();
-                        imageSource.StreamSource = entry.Open();
-                        imageSource.EndInit();
-                        Page.Source = imageSource;
+                        if (Regex.Match(fileName, page + ".").Success == true)
+                        {
+                            ms.Dispose();
+                            ms = new MemoryStream();
+                            sze.ExtractFile(fileName, ms);
+                            bitmap = new BitmapImage();
+                            bitmap.BeginInit();
+                            ms.Seek(0, SeekOrigin.Begin);
+                            bitmap.StreamSource = ms;
+                            bitmap.EndInit();
+                            Page.Source = bitmap;                            
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Window_PreviewKeyDown_1(object sender, KeyEventArgs e)
+        {
+            if ((Keyboard.IsKeyDown(Key.LeftCtrl) || (Keyboard.IsKeyDown(Key.RightCtrl)))
+                && Keyboard.IsKeyDown(Key.O))
+            {
+                sze = new SevenZipExtractor(getFileDirectory());
+                archiveNames = sze.ArchiveFileNames;
+                ms = new MemoryStream();
+                foreach (string fileName in archiveNames)
+                {
+                    if (Regex.Match(fileName, page + ".").Success == true)
+                    {
+                        sze.ExtractFile(fileName, ms);
+                        bitmap = new BitmapImage();
+                        bitmap.BeginInit();
+                        ms.Seek(0, SeekOrigin.Begin);
+                        bitmap.StreamSource = ms;
+                        bitmap.EndInit();
+                        Page.Source = bitmap;
                         page++;
                         break;
                     }
                 }
-                else if (e.Key == Key.Left)
-                {                    
-                    str = "0" + page;
-                    if (Regex.Match(z.Name, str).Success == true)
-                    {
-                        entry = z;
-                        var imageSource = new BitmapImage();
-                        imageSource.BeginInit();
-                        imageSource.StreamSource = entry.Open();
-                        imageSource.EndInit();
-                        Page.Source = imageSource;
-                        if (page != 1)
-                        {
-                            page--;
-                        }
-                        break;
-                    }
-                }
             }
-            */
-
         }
     }
 }
