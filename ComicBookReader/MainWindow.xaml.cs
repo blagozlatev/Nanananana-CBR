@@ -43,7 +43,7 @@ namespace ComicBookReader
             InitializeComponent();
             SevenZipCompressor.SetLibraryPath("7z.dll");
             try
-            {
+            {                
                 sze = new SevenZipExtractor(getFileDirectory());
                 archiveNames = sze.ArchiveFileNames;
                 foreach (string s in archiveNames)
@@ -89,7 +89,7 @@ namespace ComicBookReader
             {
                 if (ms != null && sze != null)
                 {
-                    if (page < mutableArchiveNames.Count)
+                    if (page < mutableArchiveNames.Count-1)
                         page++;
                     ms.Dispose();
                     ms = new MemoryStream();
@@ -104,9 +104,10 @@ namespace ComicBookReader
             }
             if (e.Key == Key.Left)
             {
-                if (ms != null && sze != null && page > 0)
+                if (ms != null && sze != null)
                 {
-                    page--;
+                    if (page > 0)
+                        page--;                    
                     ms.Dispose();
                     ms = new MemoryStream();
                     sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
@@ -127,22 +128,22 @@ namespace ComicBookReader
             {
                 sze = new SevenZipExtractor(getFileDirectory());
                 archiveNames = sze.ArchiveFileNames;
-                ms = new MemoryStream();
-                foreach (string fileName in mutableArchiveNames)
+                foreach (string s in archiveNames)
                 {
-                    if (Regex.Match(fileName, page + ".").Success == true)
+                    if (Regex.Match(s, "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif").Success == true)
                     {
-                        sze.ExtractFile(fileName, ms);
-                        bitmap = new BitmapImage();
-                        bitmap.BeginInit();
-                        ms.Seek(0, SeekOrigin.Begin);
-                        bitmap.StreamSource = ms;
-                        bitmap.EndInit();
-                        Page.Source = bitmap;
-                        page++;
-                        break;
+                        mutableArchiveNames.Add(s);
                     }
                 }
+                archiveNames = null;
+                ms = new MemoryStream();
+                sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                ms.Seek(0, SeekOrigin.Begin);
+                bitmap.StreamSource = ms;
+                bitmap.EndInit();
+                Page.Source = bitmap;
             }
         }
     }
