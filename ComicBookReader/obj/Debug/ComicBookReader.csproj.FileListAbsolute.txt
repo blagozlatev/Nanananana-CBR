@@ -1,16 +1,23 @@
 D:\Programming\ComicBookReader\ComicBookReader\bin\Debug\ComicBookReader.exe.config
-D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\ComicBookReader.exe.config
-D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\ComicBookReader.exe
-D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\ComicBookReader.pdb
-D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.csprojResolveAssemblyReference.cache
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\MainWindow.baml
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\MainWindow.g.cs
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\App.g.cs
-D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader_MarkupCompile.cache
-D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.g.resources
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.Properties.Resources.resources
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.csproj.GenerateResource.Cache
-D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.exe
-D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.pdb
-D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader_Content.g.cs
 D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\SevenZipSharp.dll
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.About.resources
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\Zlatev Comic Book Reader.exe.config
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\Zlatev Comic Book Reader.exe
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\Zlatev Comic Book Reader.pdb
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Zlatev Comic Book Reader_MarkupCompile.cache
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Zlatev Comic Book Reader.g.resources
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Zlatev Comic Book Reader.exe
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Zlatev Comic Book Reader.pdb
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Zlatev Comic Book Reader.TrustInfo.xml
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Zlatev Comic Book Reader.exe.manifest
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\Zlatev Comic Book Reader.exe.manifest
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\Zlatev Comic Book Reader.application
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Zlatev Comic Book Reader.application
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.csprojResolveAssemblyReference.cache
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Zlatev Comic Book Reader_Content.g.cs
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\7z.dll

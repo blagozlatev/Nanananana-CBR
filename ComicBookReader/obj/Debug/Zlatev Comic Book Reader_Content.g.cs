@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("unrar.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("7z.dll")]
 
 

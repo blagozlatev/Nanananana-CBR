@@ -1,23 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SevenZip;
-using System.Runtime.InteropServices;
 using Microsoft.Win32;
-using System.Collections.ObjectModel;
 using ComicBookReader.Nomenclatures;
 
 namespace ComicBookReader
@@ -41,10 +30,7 @@ namespace ComicBookReader
                 cbr = new CBRProcessing(getFileDirectory());
                 image.Source = cbr.GetImage();
             }
-            catch (ArgumentNullException ex)
-            {
-
-            }
+            catch (ArgumentNullException) { }            
             TransformGroup group = new TransformGroup();
 
             ScaleTransform xform = new ScaleTransform();
@@ -108,8 +94,8 @@ namespace ComicBookReader
         {
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.FileName = string.Empty;
-            openFile.DefaultExt = ".cbr";
-            openFile.Filter = "Comic Book Archive (*.cbr, *.cbz, *.cba)|*.cbr;*.cbz;*.cba";
+            openFile.DefaultExt = Constants.Strings.DefaultOpenDialogExtension;
+            openFile.Filter = Constants.Strings.OpenDialogFilter;
             var fileFound = openFile.ShowDialog();
             if (fileFound == true)
             {
@@ -143,10 +129,7 @@ namespace ComicBookReader
                         cbr = new CBRProcessing(getFileDirectory());
                     image.Source = cbr.GetImage();
                 }
-                catch (ArgumentNullException argex)
-                {
-
-                }
+                catch (ArgumentNullException) { }
             }
         }
 
@@ -158,10 +141,7 @@ namespace ComicBookReader
                     cbr = new CBRProcessing(getFileDirectory());
                 image.Source = cbr.GetImage();
             }
-            catch (ArgumentNullException argex)
-            {
-
-            }
+            catch (ArgumentNullException) { }
         }
 
         private void btnPrev_OnClick(object sender, RoutedEventArgs e)
@@ -178,8 +158,7 @@ namespace ComicBookReader
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show
-                (this, "Comic Book Reader!\n Author: Blagovest Zlatev\n 2013 All Rights Reserved");
+            new About().Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

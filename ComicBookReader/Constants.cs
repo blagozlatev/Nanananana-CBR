@@ -4,10 +4,13 @@
     {
         public static class Image
         {           
-            public static double ScaleImageStep { get { return 0.2; } }
-            public static int DivisorForCenterOfImage { get { return 2; } }
-            public static int MinimumZoomPercentage { get { return 30; } }
-            public static int MaximumZoomPercentage { get { return 400; } }
+            /// <summary>
+            /// 
+            /// </summary>
+            public static double ScaleImageStep { get { return 0.2; } }            
+            /// <summary>
+            /// 
+            /// </summary>
             public static double MinimumScaleXYValue { get { return 0.6; } }
         }
 
@@ -22,10 +25,32 @@
 
         public static class Strings
         {
+            /// <summary>
+            /// The constant represents the pattern for the Regular Express matching.
+            /// Current value is ""d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"
+            /// </summary>
             public static string RegExPattern
             {
                 get                    
                 { return "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"; }
+            }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static string DefaultOpenDialogExtension
+            {
+                get
+                { return ".cbr"; }
+            }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static string OpenDialogFilter
+            {
+                get
+                { return "Comic Book Archive (*.cbr, *.cbz, *.cbt, *.cba, *.cb7)|*.cbr;*.cbz;*.cbt;*.cba;*.cb7"; }
             }
         }
     }

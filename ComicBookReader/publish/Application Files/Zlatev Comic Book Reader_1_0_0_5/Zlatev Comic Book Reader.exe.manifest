@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Zlatev Comic Book Reader.exe" version="1.0.0.5" publicKeyToken="19eff8691dea5714" language="en" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Zlatev Comic Book Reader" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Zlatev Comic Book Reader.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet version="1" class="System.Security.NamedPermissionSet" Name="LocalIntranet" Description="Default rights given to applications on the local intranet" Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!-- UAC Manifest Options
+            If you want to change the Windows User Account Control level replace the 
+            requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+            Specifying requestedExecutionLevel node will disable file and registry virtualization.
+            If you want to utilize File and Registry Virtualization for backward 
+            compatibility then delete the requestedExecutionLevel node.
+        -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SevenZipSharp.dll" size="151040">
+      <assemblyIdentity name="SevenZipSharp" version="0.64.3890.29348" publicKeyToken="20DE82C62B055C88" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>SShLMfKNCmLXl8/PF/RkyMKyKynQ6Kt8FclHJNg+WVw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Zlatev Comic Book Reader.exe" size="52736">
+      <assemblyIdentity name="Zlatev Comic Book Reader" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>QCWNLYmrXqkij1ca084XS8xpU+cU89dFx/hj097M6CA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="7z.dll" size="914432">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>oeHR8P/0/Mz736MT873+pNPf4sLZF0phW7w5oKaSkzg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Zlatev Comic Book Reader.exe.config" size="165">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>1Nqb4szdk8MJLSKAaX/m8pgyCOVGNs0Yqk8dtc8n4iQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+    <application>
+      <!-- A list of all Windows versions that this application is designed to work with. 
+      Windows will automatically select the most compatible environment.-->
+      <!-- If your application is designed to work with Windows Vista, uncomment the following supportedOS node-->
+      <!--<supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}"></supportedOS>-->
+      <!-- If your application is designed to work with Windows 7, uncomment the following supportedOS node-->
+      <!--<supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>-->
+      <!-- If your application is designed to work with Windows 8, uncomment the following supportedOS node-->
+      <!--<supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"></supportedOS>-->
+    </application>
+  </compatibility>
+<publisherIdentity name="CN=Red\Blagovest Zlatev1" issuerKeyHash="9eb648f4411cda072a4596f3e01cb1ad12afe2de" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>0Us81je6zf03Faq1/jHKiV4X1KzLxXbjRNHsciDUCRc=</DigestValue></Reference></SignedInfo><SignatureValue>ASJKrZk8sV+C0qJEsW61uhAumSE21nMHvDmYo9wIMezOpEkDv9KO5/kzxeTwaR98vtPGd55WImXb5Gfl5J365YUcAQIr+qTyC+26X1qHmn+W1z+WH8Ee8j/xlRvDHIFOAoGzZxORqJcoBoYJz50xybS63UtDdNbKGNux9KPaSEI=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>2trLSZFsu8JgivtUIo33OxAfp0yuYXRPViX5043VuPTaOkywgSu3xE1u0f43tpLgaB6GAmRnUJwgyDC0137nUVLOLO6Q76dcOwtkdUp0zxeQPPudmQDlJuXe8smvVeqaQR92KWNnz0/bx3RvUZhs8VsST76+uu6gwC+NYZVvO0s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="1709d42072ecd144e376c5cbacd4175e89ca31feb5aa1537fdcdba37d63c4bd1" Description="" Url=""><as:assemblyIdentity name="Zlatev Comic Book Reader.exe" version="1.0.0.5" publicKeyToken="19eff8691dea5714" language="en" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Red\Blagovest Zlatev1</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>whovSdx3b1gapBKf0TZrxKPc2lc5zvzffjkWUIADOlo=</DigestValue></Reference></SignedInfo><SignatureValue>fcX8UjrGbohra2y3lTjTpRYrXp4qCd8TP5LAyITdmDyVCKCn0jQFfzoQGjtqjeI2qkvX7Di1fCH8CgztmLJZbveo56LkK1ru4zj6RiYT3XyARbITsM0xZU+tVf3reEjBTVxEqtpfHIrTItulf8DSit+qEEadEflBNdbuhQhFtP8=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>2trLSZFsu8JgivtUIo33OxAfp0yuYXRPViX5043VuPTaOkywgSu3xE1u0f43tpLgaB6GAmRnUJwgyDC0137nUVLOLO6Q76dcOwtkdUp0zxeQPPudmQDlJuXe8smvVeqaQR92KWNnz0/bx3RvUZhs8VsST76+uu6gwC+NYZVvO0s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQRJnU9ZA6lbxP6c3EtpoXUzANBgkqhkiG9w0BAQsFADA1MTMwMQYDVQQDHioAUgBlAGQAXABCAGwAYQBnAG8AdgBlAHMAdAAgAFoAbABhAHQAZQB2ADEwHhcNMTMwNzExMTgyNjUyWhcNMTQwNzEyMDAyNjUyWjA1MTMwMQYDVQQDHioAUgBlAGQAXABCAGwAYQBnAG8AdgBlAHMAdAAgAFoAbABhAHQAZQB2ADEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANray0mRbLvCYIr7VCKN9zsQH6dMrmF0T1Yl+dON1bj02jpMsIErt8RNbtH+N7aS4GgehgJkZ1CcIMgwtNd+51FSzizukO+nXDsLZHVKdM8XkDz7nZkA5Sbl3vLJr1XqmkEfdiljZ89P28d0b1GYbPFbEk++vrruoMAvjWGVbztLAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAFEr8jYqxB+YQAG9p9Y/jH6YLaS4595DGLF509N52mNOF6VUs11XdXVh22qG0aPcsLeAi+B6Z0tbLU3kVaDr8p9mPryBknZWUDJqE9y4JmmxCWEJk3GxlMjSHppMgxeKXbhRbhaXsmqDVc0PYq490fAz6ggYJaM4WVX9Hj0ieyfs=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

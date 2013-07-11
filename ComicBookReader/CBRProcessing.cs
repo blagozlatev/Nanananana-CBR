@@ -20,6 +20,11 @@ namespace ComicBookReader
         private MemoryStream ms;
         private BitmapImage bitmap;
 
+        ~CBRProcessing()
+        {
+            ms.Dispose();
+            sze.Dispose();
+        }
         public CBRProcessing(string fileDirectory)
         {
             sze = new SevenZipExtractor(fileDirectory);
