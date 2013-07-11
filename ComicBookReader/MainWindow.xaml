@@ -9,7 +9,7 @@
             <RowDefinition Height="317*"/>
         </Grid.RowDefinitions>
         <Grid Background="White" Panel.ZIndex="1">
-            <DockPanel>
+            <DockPanel >
                 <Menu DockPanel.Dock="Top">
                     <MenuItem Header="_File">
                         <MenuItem Header="_Open" Click="btnOpen_OnClick"/>
