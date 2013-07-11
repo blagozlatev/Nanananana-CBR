@@ -37,10 +37,6 @@
     <Reference Include="SevenZipSharp">
       <HintPath>..\..\DLL Libs\SevenZipSharp.dll</HintPath>
     </Reference>
-    <Reference Include="SharpCompress, Version=0.9.0.0, Culture=neutral, PublicKeyToken=beaf6f427e128133, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DLL Libs\SharpCompress.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.IO.Compression" />

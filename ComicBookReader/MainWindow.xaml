@@ -5,16 +5,16 @@
         KeyDown="Window_KeyDown" PreviewKeyDown="Window_PreviewKeyDown_1" >
     <Grid>        
         <Grid.RowDefinitions>
-            <RowDefinition Height="15*"/>
-            <RowDefinition Height="338*"/>
+            <RowDefinition Height="15*" Name="Row0"/>
+            <RowDefinition Height="338*" Name="Row1"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border Grid.Row="1" Name="border">
-            <Image Name="image" Opacity="1" RenderTransformOrigin="0.5,0.5"  />
-        </Border>
-        <Grid>
+
+        <Image Grid.Row="1" Name="image" RenderTransformOrigin="0.5,0.5"  />
+        
+        <Grid Opacity="1" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -26,69 +26,11 @@
             </Grid.ColumnDefinitions>
             <Button
                 Grid.Column="0"
-                Content="Browse"
+                Content="Open"
                 Margin="5"
-                Name="btnBrowse"
-                Click="btnBrowse_OnClick"
+                Name="btnOpen"
+                Click="btnOpen_OnClick"
                 />
-
-            <Button
-                Grid.Column="1"
-                Content="Rotate Left"
-                Margin="5"
-                Name="btnRotateLeft"
-                Click="btnRotateLeft_OnClick"
-                />
-
-            <Button
-                Content="Zoom In"
-                Grid.Column="2"
-                Margin="5"
-                Name="btnZoomIn"
-                Click="btnZoomIn_OnClick"/>
-
-            <Button
-                Content="Zoom Out"
-                Grid.Column="3"
-                Margin="5"
-                Name="btnZoomOut"
-                Click="btnZoomOut_OnClick"/>
-
-            <Button
-                Content="Fill Window"
-                Grid.Column="4"
-                Margin="5"
-                Name="btnFillWindow"
-                Click="btnFillWindow_OnClick"/>
-
-            <Button
-                Content="Original Size"
-                Grid.Column="5"
-                Margin="5"
-                Name="btnOriginalSize"
-                Click="btnOriginalSize_OnClick"/>
-
-            <TextBox
-                Grid.Column="6"
-                Margin="5"
-                Name="txtCustomZoom"
-                KeyDown="txtCustomZoom_OnEnter"
-                />            
-        </Grid>        
-        <!--<ScrollViewer Grid.Row="1" Name="scrlVwrForImage"
-                      HorizontalScrollBarVisibility="Auto"
-                      VerticalScrollBarVisibility="Auto">
-            <Image
-                            Margin="5"
-                            Name="Page"                        
-                            Stretch="Uniform" >
-                <Image.LayoutTransform x:Uid="Page">
-                    <TransformGroup>
-                        <ScaleTransform x:Name="scaleImage" />
-                        <RotateTransform x:Name="rotateImage" />
-                    </TransformGroup>
-                </Image.LayoutTransform>
-            </Image>
-        </ScrollViewer>-->
+        </Grid>
     </Grid>
 </Window>

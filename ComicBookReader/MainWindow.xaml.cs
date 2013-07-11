@@ -1,5 +1,4 @@
-﻿using SharpCompress.Archive;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -45,8 +44,7 @@ namespace ComicBookReader
 
         public MainWindow()
         {
-            InitializeComponent();
-            //rotateImage.Angle = Constants.Image.NullRotation;
+            InitializeComponent();            
             SevenZipCompressor.SetLibraryPath("7z.dll");
             try
             {                
@@ -54,7 +52,9 @@ namespace ComicBookReader
                 archiveNames = sze.ArchiveFileNames;
                 foreach (string s in archiveNames)
                 {
-                    if (Regex.Match(s, "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif").Success == true)
+                    if (Regex.Match
+                        (s, Constants.Strings.RegExPattern, RegexOptions.IgnoreCase).
+                        Success == true)
                     {
                         mutableArchiveNames.Add(s);
                     }
@@ -100,7 +100,7 @@ namespace ComicBookReader
             if (!image.IsMouseCaptured) return;
 
             var tt = (TranslateTransform)((TransformGroup)image.RenderTransform).Children.First(tr => tr is TranslateTransform);
-            Vector v = start - e.GetPosition(border);
+            Vector v = start - e.GetPosition(Row1);            
             tt.X = origin.X - v.X;
             tt.Y = origin.Y - v.Y;
         }
@@ -109,7 +109,7 @@ namespace ComicBookReader
         {
             image.CaptureMouse();
             var tt = (TranslateTransform)((TransformGroup)image.RenderTransform).Children.First(tr => tr is TranslateTransform);
-            start = e.GetPosition(border);
+            start = e.GetPosition(Row1);
             origin = new Point(tt.X, tt.Y);
         }
 
@@ -117,10 +117,20 @@ namespace ComicBookReader
         {
             TransformGroup transformGroup = (TransformGroup)image.RenderTransform;
             ScaleTransform transform = (ScaleTransform)transformGroup.Children[0];
+            double zoom = e.Delta > 0 ? 
+                Constants.Image.ScaleImageStep : -Constants.Image.ScaleImageStep;
+            if (transform.ScaleX > Constants.Image.MinimumScaleXYValue)
+            {
+                transform.ScaleX += zoom;
+                transform.ScaleY += zoom;
+            }
 
-            double zoom = e.Delta > 0 ? .2 : -.2;
-            transform.ScaleX += zoom;
-            transform.ScaleY += zoom;
+            if (transform.ScaleX < Constants.Image.MinimumScaleXYValue 
+                && zoom > Constants.General.IntZero)
+            {
+                transform.ScaleX += zoom;
+                transform.ScaleY += zoom;
+            }
         }
         
         private string getFileDirectory()
@@ -184,7 +194,8 @@ namespace ComicBookReader
                 archiveNames = sze.ArchiveFileNames;
                 foreach (string s in archiveNames)
                 {
-                    if (Regex.Match(s, "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif").Success == true)
+                    if (Regex.Match
+                        (s, Constants.Strings.RegExPattern, RegexOptions.IgnoreCase).Success == true)
                     {
                         mutableArchiveNames.Add(s);
                     }
@@ -201,69 +212,14 @@ namespace ComicBookReader
             }
         }
 
-        private void btnZoomIn_OnClick(object sender, RoutedEventArgs e)
-        {
-            //scaleImage.ScaleX += Constants.Image.ScaleImageStep;
-            //scaleImage.ScaleY += Constants.Image.ScaleImageStep;
-        }
-
-        private void btnZoomOut_OnClick(object sender, RoutedEventArgs e)
-        {
-            //if (scaleImage.ScaleX >= 0.3)
-            //{
-            //    scaleImage.ScaleX -= Constants.Image.ScaleImageStep;
-            //    scaleImage.ScaleY -= Constants.Image.ScaleImageStep;
-            //}
-        }
-
-        private void btnFillWindow_OnClick(object sender, RoutedEventArgs e)
-        {
-            //scaleImage.ScaleX = Constants.General.IntOne;
-            //scaleImage.ScaleY = Constants.General.IntOne;
-            //image.Width = scrlVwrForImage.ActualWidth - 10;
-            //image.Height = scrlVwrForImage.ActualHeight - 10;
-        }
-
-        private void btnOriginalSize_OnClick(object sender, RoutedEventArgs e)
-        {
-            //BitmapImage bmp = image.Source as BitmapImage;
-            //image.Height = bmp.Height;
-            //image.Width = bmp.Width;
-            //scaleImage.ScaleX = Constants.General.IntOne;
-            //scaleImage.ScaleY = Constants.General.IntOne;
-        }
-
-        private void txtCustomZoom_OnEnter(object sender, KeyEventArgs e)
-        {
-            //if (e.Key == Key.Enter)
-            //{
-            //    double customZoomPercentage = Constants.General.IntZero;
-            //    if (double.TryParse(txtCustomZoom.Text, out customZoomPercentage))
-            //    {
-            //        customZoomPercentage = double.Parse(txtCustomZoom.Text);
-            //    }
-            //    if (customZoomPercentage >= Constants.Image.MinimumZoomPercentage
-            //        && customZoomPercentage <= Constants.Image.MaximumZoomPercentage)
-            //    {
-            //        double zoomRatio = Constants.General.IntOne *
-            //            (customZoomPercentage / Constants.General.IntHundred);
-            //        scaleImage.ScaleX = zoomRatio;
-            //        scaleImage.ScaleY = zoomRatio;
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("The value for custom zoom must be between 30 and 400!", "Error!");
-            //    }
-            //}
-        }
-
-        private void btnBrowse_OnClick(object sender, RoutedEventArgs e)
+        private void btnOpen_OnClick(object sender, RoutedEventArgs e)
         {
             sze = new SevenZipExtractor(getFileDirectory());
-            archiveNames = sze.ArchiveFileNames;
+            archiveNames = new ReadOnlyCollection<string>(sze.ArchiveFileNames);            
             foreach (string s in archiveNames)
             {
-                if (Regex.Match(s, "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif").Success == true)
+                if (Regex.Match
+                    (s, Constants.Strings.RegExPattern, RegexOptions.IgnoreCase).Success == true)
                 {
                     mutableArchiveNames.Add(s);
                 }
@@ -277,31 +233,6 @@ namespace ComicBookReader
             bitmap.StreamSource = ms;
             bitmap.EndInit();
             image.Source = bitmap;
-        }
-
-        private void btnRotateLeft_OnClick(object sender, RoutedEventArgs e)
-        {/*
-            rotateImage.Angle -= Constants.Image.AngleRotation;
-            if (rotateImage.Angle == -Constants.Image.FullRotation)
-            {
-                rotateImage.Angle = Constants.Image.NullRotation;
-            }
-            scaleImage.CenterX = image.ActualWidth / Constants.Image.DivisorForCenterOfImage;
-            scaleImage.CenterY = image.ActualHeight / Constants.Image.DivisorForCenterOfImage;
-          */
-        }
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {            
-            //image.Width = scrlVwrForImage.ActualWidth - 10;
-            //image.Height = scrlVwrForImage.ActualHeight - 10;
-            //scaleImage.ScaleX = Constants.General.IntOne;
-            //scaleImage.ScaleY = Constants.General.IntOne;
-
-            //scaleImage.CenterX = image.ActualWidth / Constants.Image.DivisorForCenterOfImage;
-            //scaleImage.CenterY = image.ActualHeight / Constants.Image.DivisorForCenterOfImage;
-            //scaleImage.ScaleX = Constants.General.IntOne;
-            //scaleImage.ScaleY = Constants.General.IntOne;          
-        }    
+        }       
     }
 }
