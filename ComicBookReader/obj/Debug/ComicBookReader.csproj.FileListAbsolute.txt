@@ -21,3 +21,4 @@ D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Zlatev Comic Book
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.csprojResolveAssemblyReference.cache
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Zlatev Comic Book Reader_Content.g.cs
 D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\7z.dll
+D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\Nanananana CBR.exe.config

@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.20617.1 PREVIEW
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicBookReader", "ComicBookReader\ComicBookReader.csproj", "{D6A2C063-25F9-43B5-AE2D-BB7C71F0EEBC}"
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NananananaCBR", "ComicBookReader\NananananaCBR.csproj", "{D6A2C063-25F9-43B5-AE2D-BB7C71F0EEBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
