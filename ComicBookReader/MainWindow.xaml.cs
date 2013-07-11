@@ -26,26 +26,25 @@ namespace ComicBookReader
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-
     
-
     public partial class MainWindow : Window
     {
-        int page = 0;
+        int page;
         SevenZipExtractor sze;
         ReadOnlyCollection<string> archiveNames;
-        Collection<string> mutableArchiveNames = new Collection<string>();
+        Collection<string> mutableArchiveNames;
         MemoryStream ms;
         BitmapImage bitmap;
         private Point origin;
         private Point start;
 
-
-
         public MainWindow()
         {
-            InitializeComponent();            
-            SevenZipCompressor.SetLibraryPath("7z.dll");
+            InitializeComponent();                        
+            SevenZipCompressor.SetLibraryPath("7z.dll");            
+            mutableArchiveNames = new Collection<string>();
+            archiveNames = new ReadOnlyCollection<string>(new List<string>(1));
+            page = 0;
             try
             {                
                 sze = new SevenZipExtractor(getFileDirectory());
@@ -190,7 +189,43 @@ namespace ComicBookReader
             if ((Keyboard.IsKeyDown(Key.LeftCtrl) || (Keyboard.IsKeyDown(Key.RightCtrl)))
                 && Keyboard.IsKeyDown(Key.O))
             {
-                sze = new SevenZipExtractor(getFileDirectory());
+                try
+                {
+                    sze = new SevenZipExtractor(getFileDirectory());
+                    mutableArchiveNames = new Collection<string>();
+                    archiveNames = sze.ArchiveFileNames;
+                    foreach (string s in archiveNames)
+                    {
+                        if (Regex.Match
+                            (s, Constants.Strings.RegExPattern, RegexOptions.IgnoreCase).Success == true)
+                        {
+                            mutableArchiveNames.Add(s);
+                        }
+                    }
+                    archiveNames = null;
+                    ms = new MemoryStream();
+                    page = 0;
+                    sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
+                    bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    ms.Seek(0, SeekOrigin.Begin);
+                    bitmap.StreamSource = ms;
+                    bitmap.EndInit();
+                    image.Source = bitmap;
+                }
+                catch (ArgumentNullException argex)
+                {
+
+                }
+            }
+        }
+
+        private void btnOpen_OnClick(object sender, RoutedEventArgs e)
+        {            
+            try
+            {
+                sze = new SevenZipExtractor(getFileDirectory());                
+                mutableArchiveNames = new Collection<string>();
                 archiveNames = sze.ArchiveFileNames;
                 foreach (string s in archiveNames)
                 {
@@ -202,6 +237,29 @@ namespace ComicBookReader
                 }
                 archiveNames = null;
                 ms = new MemoryStream();
+                page = 0;
+                sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                ms.Seek(0, SeekOrigin.Begin);
+                bitmap.StreamSource = ms;
+                bitmap.EndInit();
+                image.Source = bitmap;
+            }
+            catch (ArgumentNullException argex)
+            {
+
+            }
+        }
+
+        private void btnPrev_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (ms != null && sze != null)
+            {
+                if (page > 0)
+                    page--;
+                ms.Dispose();
+                ms = new MemoryStream();
                 sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
                 bitmap = new BitmapImage();
                 bitmap.BeginInit();
@@ -212,27 +270,22 @@ namespace ComicBookReader
             }
         }
 
-        private void btnOpen_OnClick(object sender, RoutedEventArgs e)
+        private void btnNext_OnClick(object sender, RoutedEventArgs e)
         {
-            sze = new SevenZipExtractor(getFileDirectory());
-            archiveNames = new ReadOnlyCollection<string>(sze.ArchiveFileNames);            
-            foreach (string s in archiveNames)
+            if (ms != null && sze != null)
             {
-                if (Regex.Match
-                    (s, Constants.Strings.RegExPattern, RegexOptions.IgnoreCase).Success == true)
-                {
-                    mutableArchiveNames.Add(s);
-                }
+                if (page < mutableArchiveNames.Count - 1)
+                    page++;
+                ms.Dispose();
+                ms = new MemoryStream();
+                sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                ms.Seek(0, SeekOrigin.Begin);
+                bitmap.StreamSource = ms;
+                bitmap.EndInit();
+                image.Source = bitmap;
             }
-            archiveNames = null;
-            ms = new MemoryStream();
-            sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
-            bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            ms.Seek(0, SeekOrigin.Begin);
-            bitmap.StreamSource = ms;
-            bitmap.EndInit();
-            image.Source = bitmap;
-        }       
+        }
     }
 }

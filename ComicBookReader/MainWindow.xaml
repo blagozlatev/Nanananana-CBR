@@ -14,7 +14,7 @@
 
         <Image Grid.Row="1" Name="image" RenderTransformOrigin="0.5,0.5"  />
         
-        <Grid Opacity="1" Background="White">
+        <Grid Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -30,6 +30,22 @@
                 Margin="5"
                 Name="btnOpen"
                 Click="btnOpen_OnClick"
+                />
+
+            <Button
+                Grid.Column="1"
+                Content="Previous"
+                Margin="5"
+                Name="btnPrev"
+                Click="btnPrev_OnClick"
+                />
+
+            <Button
+                Grid.Column="2"
+                Content="Next"
+                Margin="5"
+                Name="btnNext"
+                Click="btnNext_OnClick"
                 />
         </Grid>
     </Grid>
