@@ -11,6 +11,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Border Grid.Row="1" Name="border">
+            <Image Name="image" Opacity="1" RenderTransformOrigin="0.5,0.5"  />
+        </Border>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -70,12 +73,8 @@
                 Margin="5"
                 Name="txtCustomZoom"
                 KeyDown="txtCustomZoom_OnEnter"
-                />
-
-        </Grid>
-        <Border Grid.Row="1" Name="border">
-            <Image Name="image" Opacity="1" RenderTransformOrigin="0.5,0.5"  />
-        </Border>
+                />            
+        </Grid>        
         <!--<ScrollViewer Grid.Row="1" Name="scrlVwrForImage"
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto">
@@ -83,7 +82,7 @@
                             Margin="5"
                             Name="Page"                        
                             Stretch="Uniform" >
-                <Image.LayoutTransform>
+                <Image.LayoutTransform x:Uid="Page">
                     <TransformGroup>
                         <ScaleTransform x:Name="scaleImage" />
                         <RotateTransform x:Name="rotateImage" />
