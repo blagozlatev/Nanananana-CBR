@@ -70,7 +70,7 @@ namespace ComicBookReader
             }
             catch (ArgumentNullException ex)
             {
-                MessageBox.Show(ex.Message, ex.Message);
+                
             }
 
             TransformGroup group = new TransformGroup();
@@ -287,5 +287,16 @@ namespace ComicBookReader
                 image.Source = bitmap;
             }
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show
+                (this, "Comic Book Reader!\n Author: Blagovest Zlatev\n 2013 All Rights Reserved");
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }        
     }
 }
