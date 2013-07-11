@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -28,51 +27,24 @@ namespace ComicBookReader
     /// </summary>
     
     public partial class MainWindow : Window
-    {
-        int page;
-        SevenZipExtractor sze;
-        ReadOnlyCollection<string> archiveNames;
-        Collection<string> mutableArchiveNames;
-        MemoryStream ms;
-        BitmapImage bitmap;
+    {        
         private Point origin;
         private Point start;
+        CBRProcessing cbr;
 
         public MainWindow()
         {
             InitializeComponent();                        
-            SevenZipCompressor.SetLibraryPath("7z.dll");            
-            mutableArchiveNames = new Collection<string>();
-            archiveNames = new ReadOnlyCollection<string>(new List<string>(1));
-            page = 0;
+            SevenZipCompressor.SetLibraryPath("7z.dll");
             try
-            {                
-                sze = new SevenZipExtractor(getFileDirectory());
-                archiveNames = sze.ArchiveFileNames;
-                foreach (string s in archiveNames)
-                {
-                    if (Regex.Match
-                        (s, Constants.Strings.RegExPattern, RegexOptions.IgnoreCase).
-                        Success == true)
-                    {
-                        mutableArchiveNames.Add(s);
-                    }
-                }
-                archiveNames = null;
-                ms = new MemoryStream();
-                sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
-                bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                ms.Seek(0, SeekOrigin.Begin);
-                bitmap.StreamSource = ms;
-                bitmap.EndInit();
-                image.Source = bitmap;
+            {
+                cbr = new CBRProcessing(getFileDirectory());
+                image.Source = cbr.GetImage();
             }
             catch (ArgumentNullException ex)
             {
-                
-            }
 
+            }
             TransformGroup group = new TransformGroup();
 
             ScaleTransform xform = new ScaleTransform();
@@ -118,13 +90,13 @@ namespace ComicBookReader
             ScaleTransform transform = (ScaleTransform)transformGroup.Children[0];
             double zoom = e.Delta > 0 ? 
                 Constants.Image.ScaleImageStep : -Constants.Image.ScaleImageStep;
-            if (transform.ScaleX > Constants.Image.MinimumScaleXYValue)
+            if (transform.ScaleX >= 1)
             {
                 transform.ScaleX += zoom;
                 transform.ScaleY += zoom;
             }
 
-            if (transform.ScaleX < Constants.Image.MinimumScaleXYValue 
+            if (transform.ScaleX >= 0.7
                 && zoom > Constants.General.IntZero)
             {
                 transform.ScaleX += zoom;
@@ -150,37 +122,13 @@ namespace ComicBookReader
         {      
             if (e.Key == Key.Right)
             {
-                if (ms != null && sze != null)
-                {
-                    if (page < mutableArchiveNames.Count-1)
-                        page++;
-                    ms.Dispose();
-                    ms = new MemoryStream();
-                    sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
-                    bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    ms.Seek(0, SeekOrigin.Begin);
-                    bitmap.StreamSource = ms;
-                    bitmap.EndInit();
-                    image.Source = bitmap;
-                }
+                if (cbr != null)
+                    image.Source = cbr.GetNext();                
             }
             if (e.Key == Key.Left)
             {
-                if (ms != null && sze != null)
-                {
-                    if (page > 0)
-                        page--;                    
-                    ms.Dispose();
-                    ms = new MemoryStream();
-                    sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
-                    bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    ms.Seek(0, SeekOrigin.Begin);
-                    bitmap.StreamSource = ms;
-                    bitmap.EndInit();
-                    image.Source = bitmap;
-                }
+                if (cbr != null)
+                    image.Source = cbr.GetPrevious();
             }
         }
 
@@ -191,27 +139,9 @@ namespace ComicBookReader
             {
                 try
                 {
-                    sze = new SevenZipExtractor(getFileDirectory());
-                    mutableArchiveNames = new Collection<string>();
-                    archiveNames = sze.ArchiveFileNames;
-                    foreach (string s in archiveNames)
-                    {
-                        if (Regex.Match
-                            (s, Constants.Strings.RegExPattern, RegexOptions.IgnoreCase).Success == true)
-                        {
-                            mutableArchiveNames.Add(s);
-                        }
-                    }
-                    archiveNames = null;
-                    ms = new MemoryStream();
-                    page = 0;
-                    sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
-                    bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    ms.Seek(0, SeekOrigin.Begin);
-                    bitmap.StreamSource = ms;
-                    bitmap.EndInit();
-                    image.Source = bitmap;
+                    if (cbr != null)
+                        cbr = new CBRProcessing(getFileDirectory());
+                    image.Source = cbr.GetImage();
                 }
                 catch (ArgumentNullException argex)
                 {
@@ -221,30 +151,12 @@ namespace ComicBookReader
         }
 
         private void btnOpen_OnClick(object sender, RoutedEventArgs e)
-        {            
+        {
             try
             {
-                sze = new SevenZipExtractor(getFileDirectory());                
-                mutableArchiveNames = new Collection<string>();
-                archiveNames = sze.ArchiveFileNames;
-                foreach (string s in archiveNames)
-                {
-                    if (Regex.Match
-                        (s, Constants.Strings.RegExPattern, RegexOptions.IgnoreCase).Success == true)
-                    {
-                        mutableArchiveNames.Add(s);
-                    }
-                }
-                archiveNames = null;
-                ms = new MemoryStream();
-                page = 0;
-                sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
-                bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                ms.Seek(0, SeekOrigin.Begin);
-                bitmap.StreamSource = ms;
-                bitmap.EndInit();
-                image.Source = bitmap;
+                if (cbr != null)
+                    cbr = new CBRProcessing(getFileDirectory());
+                image.Source = cbr.GetImage();
             }
             catch (ArgumentNullException argex)
             {
@@ -254,38 +166,14 @@ namespace ComicBookReader
 
         private void btnPrev_OnClick(object sender, RoutedEventArgs e)
         {
-            if (ms != null && sze != null)
-            {
-                if (page > 0)
-                    page--;
-                ms.Dispose();
-                ms = new MemoryStream();
-                sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
-                bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                ms.Seek(0, SeekOrigin.Begin);
-                bitmap.StreamSource = ms;
-                bitmap.EndInit();
-                image.Source = bitmap;
-            }
+            if (cbr != null)
+                image.Source = cbr.GetPrevious();
         }
 
         private void btnNext_OnClick(object sender, RoutedEventArgs e)
         {
-            if (ms != null && sze != null)
-            {
-                if (page < mutableArchiveNames.Count - 1)
-                    page++;
-                ms.Dispose();
-                ms = new MemoryStream();
-                sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
-                bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                ms.Seek(0, SeekOrigin.Begin);
-                bitmap.StreamSource = ms;
-                bitmap.EndInit();
-                image.Source = bitmap;
-            }
+            if (cbr != null)
+                image.Source = cbr.GetNext();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
