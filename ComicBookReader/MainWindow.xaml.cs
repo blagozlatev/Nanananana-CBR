@@ -155,7 +155,8 @@ namespace ComicBookReader
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            new About().Show();
+            //About ab = new About();
+            //ab.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

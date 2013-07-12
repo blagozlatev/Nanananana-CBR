@@ -11,7 +11,6 @@ D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\App.g.cs
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR_Content.g.cs
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR_MarkupCompile.cache
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR.g.resources
-D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\ComicBookReader.About.resources
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\NananananaCBR.Properties.Resources.resources
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\NananananaCBR.csproj.GenerateResource.Cache
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR.TrustInfo.xml
@@ -20,3 +19,5 @@ D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR.ap
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR.exe
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR.pdb
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\NananananaCBR.csprojResolveAssemblyReference.cache
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\About.baml
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\About.g.cs

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Nanananana CBR.exe" size="52224">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Nanananana CBR.exe" size="20992">
       <assemblyIdentity name="Nanananana CBR" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tEm/tKeBgvnr/ivurw5ZQATxhaQS05+RiiJD7WXhsCk=</dsig:DigestValue>
+        <dsig:DigestValue>EjrYkgZYPnrnlx1jHxwDEDvTSTCgkeJ0dG+681S4Sko=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
