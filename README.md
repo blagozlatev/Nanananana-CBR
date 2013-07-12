@@ -1,25 +1,41 @@
-Nanananana CBR
-=====================
+#Nanananana CBR
 
-Nanananana CBR is a simple comic book reader (as of July 2013 in beta version).
+###Introduction
 
+Nanananana CBR is a simple comic book reader (as of July 2013 in beta version). It was made with WPF and C#. It supports CBR, CBZ, CB7 and CBA file extensions.
+It uses the 7z and SevenZipSharp libraries (http://sevenzipsharp.codeplex.com/) for working with archive files.
+
+###Prerequesites
+
+####Prerequisites for opening the project
+  - Microsoft Visual Studio 2012
+	- .NET Framework 4.5		
+
+####Prerequisites for installing
+  -Microsoft Windows (Supporting .NET Framework 4.5)
+  -.NET Framework 4.5
+
+####Installing
+  -Navigate to Nanananana-CBR/ComicBookReader/publish/
+  -Run setup.exe
+
+#Licensing
 
 This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/.
 
-You are free:
-=====================
+####You are free:
 
 to Share — to copy, distribute and transmit the work.
 
-Under the following conditions:
-=====================
+####Under the following conditions:
+
 
 Attribution — You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).
 Noncommercial — You may not use this work for commercial purposes.
 No Derivative Works — You may not alter, transform, or build upon this work.
 
-With the understanding that:
-=====================
+####With the understanding that:
+
 
 Waiver — Any of the above conditions can be waived if you get permission from the copyright holder.
 Public Domain — Where the work or any of its elements is in the public domain under applicable law, that status is in no way affected by the license.
@@ -30,8 +46,7 @@ Rights other persons may have either in the work itself or in how the work is us
 Notice — For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to this web page.
 
 
-Full license agreement follows
-=====================
+###Full license agreement follows:
 
 License
 
