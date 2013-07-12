@@ -13,7 +13,7 @@ using ComicBookReader.Nomenclatures;
 namespace ComicBookReader
 {
     /// <summary>
-    /// 
+    /// Class that manages all the operations and processes with the CB archive.
     /// </summary>
     class CBRProcessing:IDisposable
     {
@@ -24,15 +24,16 @@ namespace ComicBookReader
         private BitmapImage bitmap;
         
         /// <summary>
-        /// 
+        /// A constructor for the class that gets the file directory
+        /// and makes it ready for usage.
         /// </summary>
         /// <param name="fileDirectory"></param>
         public CBRProcessing(string fileDirectory)
         {
-            SevenZipCompressor.SetLibraryPath("7z.dll");
+            SevenZipCompressor.SetLibraryPath(Constants.Strings.SevenZipLibrary);
             sze = new SevenZipExtractor(fileDirectory);
             page = 0;            
-            mutableArchiveNames = new Collection<string>();
+            mutableArchiveNames = new Collection<string>();            
             ms = new MemoryStream();
             ReadOnlyCollection<string> archiveNames = sze.ArchiveFileNames;
             foreach (string s in archiveNames)
@@ -44,7 +45,7 @@ namespace ComicBookReader
                     mutableArchiveNames.Add(s);
                 }
             }
-            archiveNames = null;            
+            archiveNames = null;
             sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
             ms.Seek(0, SeekOrigin.Begin);
             SetImage();
@@ -60,9 +61,9 @@ namespace ComicBookReader
         }
 
         /// <summary>
-        /// 
+        /// Gets the image for the current page in the CBA file.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The image of the page.</returns>
         public BitmapImage GetImage()
         {
             if (bitmap != null)
@@ -72,37 +73,37 @@ namespace ComicBookReader
 
 
         /// <summary>
-        /// 
+        /// Gets the next page in the CBA if there is a next page.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The image of the page.</returns>
         public BitmapImage GetNext()
         {
-            if (page < mutableArchiveNames.Count - 1)
+            if (page < mutableArchiveNames.Count - Constants.General.IntOne)
                 page++;
             ms.Dispose();
             ms = new MemoryStream();            
             sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
-            ms.Seek(0, SeekOrigin.Begin);                        
+            ms.Seek(Constants.General.IntZero, SeekOrigin.Begin);                        
             return SetImage();
         }
 
         /// <summary>
-        /// 
+        /// Gets the previous page in the CBA if there is a previous page.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The image of the page.</returns>
         public BitmapImage GetPrevious()
         {
-            if (page > 0)
+            if (page > Constants.General.IntZero)
                 page--;
             ms.Dispose();
             ms = new MemoryStream();
             sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
-            ms.Seek(0, SeekOrigin.Begin);
+            ms.Seek(Constants.General.IntZero, SeekOrigin.Begin);
             return SetImage();
         }
 
         /// <summary>
-        /// 
+        /// Method that disposes the resources and frees all the memory used by the object.
         /// </summary>
         public void Dispose()
         {

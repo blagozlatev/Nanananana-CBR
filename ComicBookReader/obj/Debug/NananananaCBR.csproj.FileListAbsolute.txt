@@ -19,3 +19,4 @@ D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR.ex
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR.application
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR.exe
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR.pdb
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\NananananaCBR.csprojResolveAssemblyReference.cache

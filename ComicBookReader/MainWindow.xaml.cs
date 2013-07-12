@@ -71,15 +71,15 @@ namespace ComicBookReader
         {
             TransformGroup transformGroup = (TransformGroup)image.RenderTransform;
             ScaleTransform transform = (ScaleTransform)transformGroup.Children[0];
-            double zoom = e.Delta > 0 ? 
+            double zoom = e.Delta > Constants.General.IntZero ? 
                 Constants.Image.ScaleImageStep : -Constants.Image.ScaleImageStep;
-            if (transform.ScaleX >= 1)
+            if (transform.ScaleX >= Constants.General.IntOne)
             {
                 transform.ScaleX += zoom;
                 transform.ScaleY += zoom;
             }
 
-            if (transform.ScaleX >= 0.7
+            if (transform.ScaleX >= Constants.Image.MinimumScaleXYValue
                 && zoom > Constants.General.IntZero)
             {
                 transform.ScaleX += zoom;
