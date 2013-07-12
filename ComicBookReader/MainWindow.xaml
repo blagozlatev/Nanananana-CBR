@@ -30,7 +30,9 @@
                 <ColumnDefinition Width="82*"/>
             </Grid.ColumnDefinitions>
             <Border Opacity="1" Grid.Column="0" Background="White" Panel.ZIndex="1" Margin="-1">
-                <Grid>
+                <Grid Background="White">
+                    <ListBox Background="White" Name="library">
+                    </ListBox>
                 </Grid>
             </Border>
             <Grid Opacity="1" Grid.Column="1" Background="White" Margin="0,0,0,0">

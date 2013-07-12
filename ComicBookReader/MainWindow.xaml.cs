@@ -23,24 +23,21 @@ namespace ComicBookReader
 
         public MainWindow()
         {
-            InitializeComponent();                        
-            SevenZipCompressor.SetLibraryPath("7z.dll");
+            InitializeComponent();                                    
             try
             {
                 cbr = new CBRProcessing(getFileDirectory());
                 image.Source = cbr.GetImage();
             }
-            catch (ArgumentNullException) { }            
+            catch (ArgumentNullException) { }           
+ 
             TransformGroup group = new TransformGroup();
-
             ScaleTransform xform = new ScaleTransform();
             group.Children.Add(xform);
 
             TranslateTransform tt = new TranslateTransform();
             group.Children.Add(tt);
-
             image.RenderTransform = group;
-
             image.MouseWheel += image_MouseWheel;
             image.MouseLeftButtonDown += image_MouseLeftButtonDown;
             image.MouseLeftButtonUp += image_MouseLeftButtonUp;

@@ -5,7 +5,6 @@ D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\Nanananana CBR.ap
 D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\Nanananana CBR.exe
 D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\Nanananana CBR.pdb
 D:\Programming\CSharpComicBookReader\ComicBookReader\bin\Debug\SevenZipSharp.dll
-D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\NananananaCBR.csprojResolveAssemblyReference.cache
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\MainWindow.baml
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\MainWindow.g.cs
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\App.g.cs

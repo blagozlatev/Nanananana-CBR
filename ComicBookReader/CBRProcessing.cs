@@ -12,21 +12,24 @@ using ComicBookReader.Nomenclatures;
 
 namespace ComicBookReader
 {
-    class CBRProcessing
+    /// <summary>
+    /// 
+    /// </summary>
+    class CBRProcessing:IDisposable
     {
         private int page;
         private SevenZipExtractor sze;        
         private Collection<string> mutableArchiveNames;
         private MemoryStream ms;
         private BitmapImage bitmap;
-
-        ~CBRProcessing()
-        {
-            ms.Dispose();
-            sze.Dispose();
-        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileDirectory"></param>
         public CBRProcessing(string fileDirectory)
         {
+            SevenZipCompressor.SetLibraryPath("7z.dll");
             sze = new SevenZipExtractor(fileDirectory);
             page = 0;            
             mutableArchiveNames = new Collection<string>();
@@ -56,6 +59,10 @@ namespace ComicBookReader
             return bitmap;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public BitmapImage GetImage()
         {
             if (bitmap != null)
@@ -63,6 +70,11 @@ namespace ComicBookReader
             else return null;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public BitmapImage GetNext()
         {
             if (page < mutableArchiveNames.Count - 1)
@@ -74,6 +86,10 @@ namespace ComicBookReader
             return SetImage();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public BitmapImage GetPrevious()
         {
             if (page > 0)
@@ -83,6 +99,15 @@ namespace ComicBookReader
             sze.ExtractFile(mutableArchiveNames.ElementAt(page), ms);
             ms.Seek(0, SeekOrigin.Begin);
             return SetImage();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose()
+        {
+            ms.Dispose();
+            sze.Dispose();
         }
     }
 }
