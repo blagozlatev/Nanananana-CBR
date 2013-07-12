@@ -5,19 +5,17 @@
 Nanananana CBR is a simple comic book reader (as of July 2013 in beta version). It was made with WPF and C#. It supports CBR, CBZ, CB7 and CBA file extensions.
 It uses the 7z and SevenZipSharp libraries (http://sevenzipsharp.codeplex.com/) for working with archive files.
 
-###Prerequesites
-
 ####Prerequisites for opening the project
-  - Microsoft Visual Studio 2012
-	- .NET Framework 4.5		
+	Microsoft Visual Studio 2012
+	.NET Framework 4.5		
 
 ####Prerequisites for installing
-  -Microsoft Windows (Supporting .NET Framework 4.5)
-  -.NET Framework 4.5
+	Microsoft Windows (Supporting .NET Framework 4.5)
+	.NET Framework 4.5
 
 ####Installing
-  -Navigate to Nanananana-CBR/ComicBookReader/publish/
-  -Run setup.exe
+	Navigate to Nanananana-CBR/ComicBookReader/publish/
+	Run setup.exe
 
 #Licensing
 
