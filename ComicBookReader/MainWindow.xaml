@@ -15,6 +15,9 @@
                         <MenuItem Header="_Open" Click="btnOpen_OnClick"/>
                         <MenuItem Header="_Close" Click="MenuItem_Click_1"/>                        
                     </MenuItem>
+                    <MenuItem Header="_Options">
+                        
+                    </MenuItem>
                     <MenuItem Header="_About" Click="MenuItem_Click">                        
                     </MenuItem>
                 </Menu>
@@ -26,13 +29,15 @@
                 <ColumnDefinition Width="17*"/>
                 <ColumnDefinition Width="82*"/>
             </Grid.ColumnDefinitions>
-            <Grid Opacity="1" Grid.Column="0" Background="White" Panel.ZIndex="1" Margin="0,0,0,0">
-            </Grid>
+            <Border Opacity="1" Grid.Column="0" Background="White" Panel.ZIndex="1" Margin="-1">
+                <Grid>
+                </Grid>
+            </Border>
             <Grid Opacity="1" Grid.Column="1" Background="White" Margin="0,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="14*"/>
                     <RowDefinition Height="309*" Name="Row1"/>
-                </Grid.RowDefinitions>
+                </Grid.RowDefinitions>                
                 <Grid Opacity="1" Background="White" Panel.ZIndex="1" Margin="0,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
