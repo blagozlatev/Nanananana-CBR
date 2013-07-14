@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="CBRProcessing.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="ListHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

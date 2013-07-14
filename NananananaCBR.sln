@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NananananaCBR", "ComicBookReader\NananananaCBR.csproj", "{D6A2C063-25F9-43B5-AE2D-BB7C71F0EEBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NananananaCBRTest", "NananananaCBRTest\NananananaCBRTest\NananananaCBRTest.csproj", "{E13EC8F4-2818-4269-A6A7-BF38104F02ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{D6A2C063-25F9-43B5-AE2D-BB7C71F0EEBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6A2C063-25F9-43B5-AE2D-BB7C71F0EEBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6A2C063-25F9-43B5-AE2D-BB7C71F0EEBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E13EC8F4-2818-4269-A6A7-BF38104F02ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E13EC8F4-2818-4269-A6A7-BF38104F02ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E13EC8F4-2818-4269-A6A7-BF38104F02ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E13EC8F4-2818-4269-A6A7-BF38104F02ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

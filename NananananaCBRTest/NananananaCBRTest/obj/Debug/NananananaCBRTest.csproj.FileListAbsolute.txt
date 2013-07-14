@@ -1,0 +1,5 @@
+D:\Programming\CSharpComicBookReader\NananananaCBRTest\NananananaCBRTest\bin\Debug\NananananaCBRTest.dll
+D:\Programming\CSharpComicBookReader\NananananaCBRTest\NananananaCBRTest\bin\Debug\NananananaCBRTest.pdb
+D:\Programming\CSharpComicBookReader\NananananaCBRTest\NananananaCBRTest\obj\Debug\NananananaCBRTest.csprojResolveAssemblyReference.cache
+D:\Programming\CSharpComicBookReader\NananananaCBRTest\NananananaCBRTest\obj\Debug\NananananaCBRTest.dll
+D:\Programming\CSharpComicBookReader\NananananaCBRTest\NananananaCBRTest\obj\Debug\NananananaCBRTest.pdb

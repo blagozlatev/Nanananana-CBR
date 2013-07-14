@@ -20,8 +20,7 @@ namespace NananananaCBR
     {        
         private Point origin;
         private Point start;
-        CBRProcessing cbr;
-        DirectoryInfo dir;
+        CBRProcessing cbr;        
 
         public MainWindow()
         {
@@ -32,13 +31,16 @@ namespace NananananaCBR
                 image.Source = cbr.GetImage();
             }
             catch (ArgumentNullException) { }
-            dir = new DirectoryInfo(@"E:\Downloads\Hellblazer");
-            List<FileInfo> fi = dir.GetFiles().ToList();            
-            foreach (FileInfo f in fi)
-            {                
-                library.Items.Add(f.Name);
-            }            
- 
+            //dir = new DirectoryInfo(@"E:\Downloads\Hellblazer");
+            //List<FileInfo> fi = dir.GetFiles().ToList();                                    
+            //    library.Items.Add(f.Name);            
+            ListHandler lh = new ListHandler("E:\\Downloads\\Hellblazer");
+            var names = lh.getFileNames();
+            for (int i = 0; i < lh.getCount(); i++)
+            {
+                library.Items.Add(names["file"][i]);
+            }
+
             TransformGroup group = new TransformGroup();
             ScaleTransform xform = new ScaleTransform();
             group.Children.Add(xform);
@@ -171,7 +173,7 @@ namespace NananananaCBR
 
         private void library_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {            
-            cbr = new CBRProcessing(dir.FullName + "\\" + library.SelectedItem.ToString());
+            //cbr = new CBRProcessing(dir.FullName + "\\" + library.SelectedItem.ToString());
             image.Source = cbr.GetImage();
         }
 
@@ -179,7 +181,7 @@ namespace NananananaCBR
         {
             if (e.Key == Key.Enter)
             {
-                cbr = new CBRProcessing(dir.FullName + "\\" + library.SelectedItem.ToString());
+              //  cbr = new CBRProcessing(dir.FullName + "\\" + library.SelectedItem.ToString());
                 image.Source = cbr.GetImage();
             }
         }        
