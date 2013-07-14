@@ -1,4 +1,4 @@
-﻿namespace ComicBookReader.Nomenclatures
+﻿namespace NananananaCBR
 {    
     public static class Constants
     {

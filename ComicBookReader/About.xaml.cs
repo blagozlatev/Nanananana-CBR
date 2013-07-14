@@ -10,15 +10,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ComicBookReader
+namespace NananananaCBR
 {
     /// <summary>
     /// Interaction logic for About.xaml
     /// </summary>
-    public partial class About : UserControl
+    public partial class About : Window
     {
         public About()
         {

@@ -7,9 +7,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using SevenZip;
 using Microsoft.Win32;
-using ComicBookReader.Nomenclatures;
+using System.IO;
+using System.Collections.Generic;
 
-namespace ComicBookReader
+namespace NananananaCBR
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -20,6 +21,7 @@ namespace ComicBookReader
         private Point origin;
         private Point start;
         CBRProcessing cbr;
+        DirectoryInfo dir;
 
         public MainWindow()
         {
@@ -29,7 +31,13 @@ namespace ComicBookReader
                 cbr = new CBRProcessing(getFileDirectory());
                 image.Source = cbr.GetImage();
             }
-            catch (ArgumentNullException) { }           
+            catch (ArgumentNullException) { }
+            dir = new DirectoryInfo(@"E:\Downloads\Hellblazer");
+            List<FileInfo> fi = dir.GetFiles().ToList();            
+            foreach (FileInfo f in fi)
+            {                
+                library.Items.Add(f.Name);
+            }            
  
             TransformGroup group = new TransformGroup();
             ScaleTransform xform = new ScaleTransform();
@@ -41,7 +49,7 @@ namespace ComicBookReader
             image.MouseWheel += image_MouseWheel;
             image.MouseLeftButtonDown += image_MouseLeftButtonDown;
             image.MouseLeftButtonUp += image_MouseLeftButtonUp;
-            image.MouseMove += image_MouseMove;
+            image.MouseMove += image_MouseMove;            
         }
 
         private void image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -77,9 +85,7 @@ namespace ComicBookReader
             {
                 transform.ScaleX += zoom;
                 transform.ScaleY += zoom;
-            }
-
-            if (transform.ScaleX >= Constants.Image.MinimumScaleXYValue
+            } else if (transform.ScaleX >= Constants.Image.MinimumScaleXYValue
                 && zoom > Constants.General.IntZero)
             {
                 transform.ScaleX += zoom;
@@ -99,7 +105,7 @@ namespace ComicBookReader
                 return openFile.FileName;
             }
             return null;
-        }       
+        }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {      
@@ -155,13 +161,27 @@ namespace ComicBookReader
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            //About ab = new About();
-            //ab.Visibility = System.Windows.Visibility.Visible;
+            new About().Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void library_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {            
+            cbr = new CBRProcessing(dir.FullName + "\\" + library.SelectedItem.ToString());
+            image.Source = cbr.GetImage();
+        }
+
+        private void library_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                cbr = new CBRProcessing(dir.FullName + "\\" + library.SelectedItem.ToString());
+                image.Source = cbr.GetImage();
+            }
         }        
     }
 }

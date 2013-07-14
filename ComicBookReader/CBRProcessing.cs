@@ -8,9 +8,8 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
-using ComicBookReader.Nomenclatures;
 
-namespace ComicBookReader
+namespace NananananaCBR
 {
     /// <summary>
     /// Class that manages all the operations and processes with the CB archive.
@@ -66,9 +65,7 @@ namespace ComicBookReader
         /// <returns>The image of the page.</returns>
         public BitmapImage GetImage()
         {
-            if (bitmap != null)
-                return bitmap;
-            else return null;
+            return bitmap;
         }
 
 
