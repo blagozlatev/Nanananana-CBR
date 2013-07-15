@@ -17,14 +17,14 @@ namespace NananananaCBR
         public ListHandler(string Directory)
         {
             DirectoryInfo dir;
-            dir = new DirectoryInfo(Directory);            
-            List<FileInfo> fileInfo = new List<FileInfo>();
+            dir = new DirectoryInfo(Directory);
+            List<FileInfo> fileInfo = dir.GetFiles().ToList();
             fullNames = new List<string>();
             fileNames = new List<string>();
             foreach (FileInfo f in fileInfo)
             {
                 if (Regex.Match
-                    (f.FullName, Constants.Strings.RegExPattern, RegexOptions.IgnoreCase).
+                    (f.Name, Constants.Strings.RegExPatternForArchives, RegexOptions.IgnoreCase).
                     Success == true)
                 {
                     fullNames.Add(f.FullName);
@@ -38,7 +38,7 @@ namespace NananananaCBR
             Dictionary<string, string[]> namesDictionary = new Dictionary<string, string[]>();
             namesDictionary.Add("full", fullNames.ToArray());
             namesDictionary.Add("file", fileNames.ToArray());
-            //string str = namesDictionary["full"][0];
+            string str = namesDictionary["file"].ElementAt(0);
             return namesDictionary;
         }
 

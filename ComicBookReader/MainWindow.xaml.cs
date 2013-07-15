@@ -20,8 +20,8 @@ namespace NananananaCBR
     {        
         private Point origin;
         private Point start;
-        CBRProcessing cbr;        
-
+        private CBRProcessing cbr;
+        private ListHandler lh;
         public MainWindow()
         {
             InitializeComponent();                                    
@@ -30,11 +30,8 @@ namespace NananananaCBR
                 cbr = new CBRProcessing(getFileDirectory());
                 image.Source = cbr.GetImage();
             }
-            catch (ArgumentNullException) { }
-            //dir = new DirectoryInfo(@"E:\Downloads\Hellblazer");
-            //List<FileInfo> fi = dir.GetFiles().ToList();                                    
-            //    library.Items.Add(f.Name);            
-            ListHandler lh = new ListHandler("E:\\Downloads\\Hellblazer");
+            catch (ArgumentNullException) { }       
+            lh = new ListHandler("E:\\Downloads\\Hellblazer");
             var names = lh.getFileNames();
             for (int i = 0; i < lh.getCount(); i++)
             {
@@ -172,8 +169,9 @@ namespace NananananaCBR
         }
 
         private void library_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {            
-            //cbr = new CBRProcessing(dir.FullName + "\\" + library.SelectedItem.ToString());
+        {
+            var names = lh.getFileNames();
+            cbr = new CBRProcessing(names["full"][library.SelectedIndex]);
             image.Source = cbr.GetImage();
         }
 
@@ -181,7 +179,8 @@ namespace NananananaCBR
         {
             if (e.Key == Key.Enter)
             {
-              //  cbr = new CBRProcessing(dir.FullName + "\\" + library.SelectedItem.ToString());
+                var names = lh.getFileNames();
+                cbr = new CBRProcessing(names["full"][library.SelectedIndex]);
                 image.Source = cbr.GetImage();
             }
         }        

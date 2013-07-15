@@ -38,7 +38,7 @@ namespace NananananaCBR
             foreach (string s in archiveNames)
             {
                 if (Regex.Match
-                    (s, Constants.Strings.RegExPattern, RegexOptions.IgnoreCase).
+                    (s, Constants.Strings.RegExPatternForPage, RegexOptions.IgnoreCase).
                     Success == true)
                 {
                     mutableArchiveNames.Add(s);

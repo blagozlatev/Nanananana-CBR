@@ -29,13 +29,43 @@
         public static class Strings
         {
             /// <summary>
-            /// The constant represents the pattern for the Regular Express matching.
+            /// The constant represents the pattern for the Regular Express matching for pages.
             /// Current value is ""d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"
             /// </summary>
-            public static string RegExPattern
+            public static string RegExPatternForPage
             {
                 get                    
                 { return "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"; }
+            }
+
+            /// <summary>
+            /// The constant represents the pattern for the Regular Express matching for pages.
+            /// Current value is ""d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"
+            /// </summary>
+            public static string FullNameKey
+            {
+                get
+                { return "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"; }
+            }
+
+            /// <summary>
+            /// The constant represents the pattern for the Regular Express matching for pages.
+            /// Current value is ""d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"
+            /// </summary>
+            public static string FileNameKey
+            {
+                get
+                { return "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"; }
+            }            
+
+            /// <summary>
+            /// The constant represents the pattern for the Regular Express matching for archives.
+            /// Current value is "*.cbr|*.cbz|*.cb7|*.cba|*.cbt"
+            /// </summary>
+            public static string RegExPatternForArchives
+            {
+                get
+                { return ".cbr|.cbz|.cb7|.cba|.cbt"; }
             }
 
             /// <summary>
