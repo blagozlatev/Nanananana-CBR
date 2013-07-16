@@ -48,13 +48,7 @@
                 { return "full"; }
             }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
             /// <summary>
-=======
->>>>>>> Library now works as expected.
->>>>>>> a087903759f2bad2d47878976b6e8ae37f25661d
             /// The constant represents the key for getting the Name of a file from the dictionary.
             /// Current value is "file"
             /// </summary>
@@ -62,11 +56,6 @@
             {
                 get
                 { return "file"; }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> a087903759f2bad2d47878976b6e8ae37f25661d
             }
 
             /// <summary>
@@ -97,10 +86,6 @@
             {
                 get
                 { return "C:\\"; }
-<<<<<<< HEAD
-=======
->>>>>>> Library now works as expected.
->>>>>>> a087903759f2bad2d47878976b6e8ae37f25661d
             }            
 
             /// <summary>
