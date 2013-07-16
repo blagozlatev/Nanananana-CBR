@@ -14,7 +14,15 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>seqlpDKnFOvWt4dEbRwe84Xn7/3Cz3RA1lXkte46NsM=</dsig:DigestValue>
+=======
+<<<<<<< HEAD
+        <dsig:DigestValue>KcGN+Uw+frdJwonHlzOrzsd+g+WC5+LnJ6U+VlEuX8o=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>seqlpDKnFOvWt4dEbRwe84Xn7/3Cz3RA1lXkte46NsM=</dsig:DigestValue>
+>>>>>>> Library now works as expected.
+>>>>>>> a087903759f2bad2d47878976b6e8ae37f25661d
       </hash>
     </dependentAssembly>
   </dependency>

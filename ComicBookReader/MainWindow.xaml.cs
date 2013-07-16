@@ -31,11 +31,27 @@ namespace NananananaCBR
             {
                 library.Items.Add(lh.getFileName(i));
             }
+<<<<<<< HEAD
 
             try
             {
                 cbr = new CBRProcessing(lh.getFullName(Constants.General.IntZero));
                 image.Source = cbr.GetImage();
+=======
+<<<<<<< HEAD
+            catch (ArgumentNullException) { }       
+            lh = new ListHandler("E:\\Downloads\\Hellblazer");            
+            for (int i = 0; i < lh.getCount(); i++)
+            {
+                library.Items.Add(lh.getFileName(i));
+=======
+
+            try
+            {
+                cbr = new CBRProcessing(lh.getFullName(Constants.General.IntZero));
+                image.Source = cbr.GetImage();
+>>>>>>> Library now works as expected.
+>>>>>>> a087903759f2bad2d47878976b6e8ae37f25661d
             }
             catch (ArgumentNullException) { }                        
 
