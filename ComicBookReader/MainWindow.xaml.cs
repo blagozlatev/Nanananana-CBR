@@ -24,19 +24,20 @@ namespace NananananaCBR
         private ListHandler lh;
         public MainWindow()
         {
-            InitializeComponent();                                    
-            try
-            {
-                cbr = new CBRProcessing(getFileDirectory());
-                image.Source = cbr.GetImage();
-            }
-            catch (ArgumentNullException) { }       
-            lh = new ListHandler("E:\\Downloads\\Hellblazer");
-            var names = lh.getFileNames();
+            InitializeComponent();
+
+            lh = new ListHandler(KeyHandler.getLibraryDirectory());
             for (int i = 0; i < lh.getCount(); i++)
             {
-                library.Items.Add(names["file"][i]);
+                library.Items.Add(lh.getFileName(i));
             }
+
+            try
+            {
+                cbr = new CBRProcessing(lh.getFullName(Constants.General.IntZero));
+                image.Source = cbr.GetImage();
+            }
+            catch (ArgumentNullException) { }                        
 
             TransformGroup group = new TransformGroup();
             ScaleTransform xform = new ScaleTransform();
@@ -160,7 +161,7 @@ namespace NananananaCBR
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            new About().Show();
+            new About().ShowDialog();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
@@ -169,9 +170,8 @@ namespace NananananaCBR
         }
 
         private void library_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var names = lh.getFileNames();
-            cbr = new CBRProcessing(names["full"][library.SelectedIndex]);
+        {            
+            cbr = new CBRProcessing(lh.getFullName(library.SelectedIndex));
             image.Source = cbr.GetImage();
         }
 
@@ -179,10 +179,20 @@ namespace NananananaCBR
         {
             if (e.Key == Key.Enter)
             {
-                var names = lh.getFileNames();
-                cbr = new CBRProcessing(names["full"][library.SelectedIndex]);
+                cbr = new CBRProcessing(lh.getFullName(library.SelectedIndex));
                 image.Source = cbr.GetImage();
             }
-        }        
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            new Options().ShowDialog();
+            library.Items.Clear();
+            lh = new ListHandler(KeyHandler.getLibraryDirectory());            
+            for (int i = 0; i < lh.getCount(); i++)
+            {
+                library.Items.Add(lh.getFileName(i));
+            }
+        }
     }
 }

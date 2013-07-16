@@ -21,3 +21,5 @@ D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Nanananana CBR.pd
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\NananananaCBR.csprojResolveAssemblyReference.cache
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\About.baml
 D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\About.g.cs
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Options.baml
+D:\Programming\CSharpComicBookReader\ComicBookReader\obj\Debug\Options.g.cs

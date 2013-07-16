@@ -39,23 +39,52 @@
             }
 
             /// <summary>
-            /// The constant represents the pattern for the Regular Express matching for pages.
-            /// Current value is ""d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"
+            /// The constant represents the key for getting the FullName of a file from the dictionary.
+            /// Current value is "full"
             /// </summary>
             public static string FullNameKey
             {
                 get
-                { return "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"; }
+                { return "full"; }
             }
 
-            /// <summary>
-            /// The constant represents the pattern for the Regular Express matching for pages.
-            /// Current value is ""d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"
+            /// The constant represents the key for getting the Name of a file from the dictionary.
+            /// Current value is "file"
             /// </summary>
             public static string FileNameKey
             {
                 get
-                { return "d*.png|d*.jpg|d*.jpeg|d*.tiff|d*.gif"; }
+                { return "file"; }
+            }
+
+            /// <summary>
+            /// The consant represents the name of the Registry Key.
+            /// Current value is "NananananaCBR"
+            /// </summary>
+            public static string RegistryKeyName
+            {
+                get
+                { return "NananananaCBR"; }
+            }
+
+            /// <summary>
+            /// The consant represents the value for the subkey registry.
+            /// Current value is "LibraryDirectory"
+            /// </summary>
+            public static string RegistryKeyValue
+            {
+                get
+                { return "LibraryDirectory"; }
+            }
+
+            /// <summary>
+            /// The consant represents the initial directory.
+            /// Current value is "C:\\"
+            /// </summary>
+            public static string RegistryInitialDirectory
+            {
+                get
+                { return "C:\\"; }
             }            
 
             /// <summary>

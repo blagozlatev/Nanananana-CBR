@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 namespace NananananaCBR
 {
     class ListHandler
-    {                
-        private List<string> fullNames;        
-        private List<string> fileNames;
+    {                        
+        private Dictionary<string, string[]> namesDictionary = new Dictionary<string, string[]>();
 
         public ListHandler(string Directory)
         {
             DirectoryInfo dir;
             dir = new DirectoryInfo(Directory);
             List<FileInfo> fileInfo = dir.GetFiles().ToList();
-            fullNames = new List<string>();
-            fileNames = new List<string>();
+            List<string> fullNames = new List<string>();
+            List<string> fileNames = new List<string>();
+            namesDictionary = new Dictionary<string, string[]>();
             foreach (FileInfo f in fileInfo)
             {
                 if (Regex.Match
@@ -31,20 +31,36 @@ namespace NananananaCBR
                     fileNames.Add(f.Name);
                 }
             }
-        }
-
-        public Dictionary<string, string[]> getFileNames()
-        {
-            Dictionary<string, string[]> namesDictionary = new Dictionary<string, string[]>();
-            namesDictionary.Add("full", fullNames.ToArray());
-            namesDictionary.Add("file", fileNames.ToArray());
-            string str = namesDictionary["file"].ElementAt(0);
-            return namesDictionary;
-        }
+            namesDictionary.Add(Constants.Strings.FullNameKey, fullNames.ToArray());
+            namesDictionary.Add(Constants.Strings.FileNameKey, fileNames.ToArray());
+        }        
 
         public int getCount()
         {
-            return fullNames.Count();
+            return namesDictionary[Constants.Strings.FileNameKey].Count(); ;
+        }
+
+        public string getFullName(int index)
+        {
+            try
+            {
+                return namesDictionary[Constants.Strings.FullNameKey][index];
+            }
+            catch (IndexOutOfRangeException) {
+                return string.Empty;
+            }
+        }
+
+        public string getFileName(int index)
+        {
+            try
+            {
+                return namesDictionary[Constants.Strings.FileNameKey][index];
+            }
+            catch (IndexOutOfRangeException)
+            {
+                return string.Empty;
+            }
         }
     }
 }

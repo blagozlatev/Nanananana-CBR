@@ -15,8 +15,7 @@
                         <MenuItem Header="_Open" Click="btnOpen_OnClick"/>
                         <MenuItem Header="_Close" Click="MenuItem_Click_1"/>
                     </MenuItem>
-                    <MenuItem Header="_Options">
-
+                    <MenuItem Header="_Options" Click="MenuItem_Click_2">
                     </MenuItem>
                     <MenuItem Header="_About" Click="MenuItem_Click">
                     </MenuItem>
